@@ -1,0 +1,13 @@
+allure-results/
+libs/
+bin/
+classes/
+build/
+scratch/
+generated/
+generated-test/
+docs/
+.externalToolBuilders
+.settings
+.gradle/
+.allure/

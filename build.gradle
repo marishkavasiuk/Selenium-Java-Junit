@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.7.0"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.7.0'
+}
+apply plugin: "io.qameta.allure"
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compile 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    compile 'io.github.bonigarcia:webdrivermanager:4.0.0'
+    compile 'net.lightbody.bmp:browsermob-core:2.1.5'
+
+    compile 'com.github.appium:java-client:7.3.0'
+    compile 'com.codeborne:selenide:5.12.2'
+    compile 'io.cucumber:cucumber-java:4.2.5'
+
+    compile 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    compile 'org.junit.jupiter:junit-jupiter-engine:5.6.0'
+    compile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.6.0'
+    compile group: 'com.smartgwt', name: 'smartgwt', version: '2.4'
+    compile group: 'org.json', name: 'json', version: '20200518'
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '5.2.8.RELEASE'
+    compile 'io.qameta.allure:allure-junit5:2.10.0'
+    compile 'io.qameta.allure:allure-selenide:2.10.0'
+
+}
+
+task mergeJUnitReports {
+    ext {
+        resultsDir = file("$buildDir/test-results/test")
+        targetDir = file("$buildDir/test-results/merged")
+    }
+
+    doLast {
+        ant.taskdef(name: 'junitreport',
+                classname: 'org.apache.tools.ant.taskdefs.optional.junit.XMLResultAggregator',
+                classpath: configurations.antJUnit.asPath)
+
+        ant.junitreport(todir: resultsDir) {
+            fileset(dir: resultsDir, includes: 'TEST-*.xml')
+            report(todir: targetDir, styledir: "src/test/resources/junitreport", format: 'frames')
+        }
+    }
+}
+
+allure {
+    autoconfigure = true
+    version = '2.7.0'
+    aspectjweaver = true
+
+    useJUnit5 {
+        version = '2.7.0'
+    }
+    resultsDir = file('allure-results')
+    reportDir = file('allure-report')
+
+
+    downloadLink = 'https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.7.0/allure-2.7.0.zip'
+}
+
+
+test {
+    useJUnitPlatform(){
+        includeTags 'Regression'
+        excludeTags 'Disabled'
+    }
+    maxParallelForks = 4
+}
+

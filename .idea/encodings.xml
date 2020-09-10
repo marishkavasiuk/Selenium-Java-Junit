@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/CreateRepositoryPage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/HomePage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/IssuePage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/IssuesSectionPage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/LoginPage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/NotificationsPage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/OptionsPage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/Page.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/ProjectPage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/ProjectsSectionPage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/RepositoryAbstractPage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/RepositoryPage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/SearchPage.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/common/pages/StartPage.java" charset="windows-1252" />
+  </component>
+</project>
